@@ -11,8 +11,22 @@ const add_to_list = (text, todolist, setTodolist) => {
 import { List } from 'antd';
 import Confirmdelete from "../companents/Confirmdelete"
 
+//  method to fetch data from an API endpoint
+async function getData() {
+  
+  const res = await fetch('https://reqres.in/api/users?page=2');
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+ 
+  return await res.json();
+}
+ 
+
 
 const TodoList = ({ data }) => {
+  const dataa =  getData();
+  console.log(dataa);
   return (<List
     itemLayout="horizontal"
     dataSource={data}
